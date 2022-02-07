@@ -1,7 +1,7 @@
 <template>
 	<div id="sidebar">
-		<div class="fixed inset-0 flex z-40">
-			<div class="absolute flex flex-col top-0 h-screen w-screen z-20">
+		<div class="fixed inset-0 h-12 flex z-40">
+			<div class="absolute flex flex-col top-0 w-screen z-20">
 				<div class="flex items-center justify-start w-full border-b-4 border-gray-900 p-2">
 					<icon-button @click="open = !open">
 						<em class="fas fa-bars text-xl" />
@@ -25,7 +25,8 @@
 						<router-link
 							v-for="item in itemsSidebar"
 							:key="`item_${item.redirect}`"
-							:to="item.redirect"
+							:to="{ name: item.redirect }"
+							@click="open = !open"
 							class="flex w-full justify-between pb-2 pt-4 mt-2 border-b border-gray-500 text-gray-700"
 						>
 							<span>{{ item.title }}</span>
