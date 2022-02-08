@@ -14,7 +14,7 @@ export default [
 	{
 		path: '/movies/new',
 		name: 'new-movie',
-		component: () => import('../../views/movies/form/Form.vue'),
+		component: () => import('../../views/movies/create/Create.vue'),
 		props: {
 			title: 'New movie',
 		},
@@ -22,6 +22,6 @@ export default [
 	{
 		path: '/movies/:id',
 		name: 'edit-movie',
-		component: () => import('../../views/movies/form/Form.vue'),
+		component: () => import('../../views/movies/edit/Edit.vue'),
 	},
 ]

@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col w-full">
+	<div class="flex flex-col w-full sm:grid sm:grid-cols-3 sm:gap-1.5">
 		<router-link
 			v-for="movie in movies"
 			:key="`movie_${movie.id}`"

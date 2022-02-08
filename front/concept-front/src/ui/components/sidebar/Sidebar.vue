@@ -6,7 +6,7 @@
 					<icon-button @click="open = !open">
 						<em class="fas fa-bars text-xl" />
 					</icon-button>
-					<span class="ml-2">{{ title }}</span>
+					<span class="ml-2 truncate">{{ title }}</span>
 				</div>
 
 				<div
