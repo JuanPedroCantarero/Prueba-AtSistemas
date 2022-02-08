@@ -2,7 +2,7 @@
 	<div id="sidebar">
 		<div class="fixed inset-0 h-12 flex z-40">
 			<div class="absolute flex flex-col top-0 w-screen z-20">
-				<div class="flex items-center justify-start w-full border-b-4 border-gray-900 p-2">
+				<div class="flex items-center justify-start w-full border-b-4 border-gray-900 p-2 bg-white">
 					<icon-button @click="open = !open">
 						<em class="fas fa-bars text-xl" />
 					</icon-button>
