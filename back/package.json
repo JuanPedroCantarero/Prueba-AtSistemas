@@ -1,0 +1,14 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --delay 1000"
+  },
+  "keywords": [],
+  "author": "Juan Pedro Cantarero",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "0.17.0"
+  }
+}
