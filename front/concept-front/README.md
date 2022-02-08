@@ -1,4 +1,4 @@
-# prueba-tecnica
+# concept-front
 
 ## Project setup
 ```
