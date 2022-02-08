@@ -1,6 +1,6 @@
 import { defineAsyncComponent, ref } from 'vue'
 import { CONFIG } from './config'
-import titleState from '../../../states/titleState'
+import titleState from '../../../application/states/titleState'
 
 export default {
 	components: {

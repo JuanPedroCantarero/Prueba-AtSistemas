@@ -1,17 +1,21 @@
-import { getMovies } from '../../../../infraestructure/movies/getMovies'
-import { onMounted, reactive } from 'vue'
+import { defineAsyncComponent, onMounted } from 'vue'
+import movieState from '../../../../application/states/movies'
+
 export default {
 	name: 'Movies',
+	components: {
+		IconButton: defineAsyncComponent(() => import('../../../components/iconButton/IconButton.vue')),
+		Card: defineAsyncComponent(() => import('../../../components/card/Card.vue')),
+	},
 	setup() {
-		let state = reactive({
-			movies: [],
-		})
+		const { loadMovies, movies } = movieState()
 
 		onMounted(async () => {
-			state.movies = await getMovies()
+			await loadMovies()
 		})
+
 		return {
-			state,
+			movies,
 		}
 	},
 }

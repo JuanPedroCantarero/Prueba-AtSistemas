@@ -4,6 +4,7 @@
 			<sidebar></sidebar>
 			<div class="flex p-4 pt-14">
 				<router-view />
+				<Loading v-if="loading" />
 			</div>
 		</div>
 	</div>

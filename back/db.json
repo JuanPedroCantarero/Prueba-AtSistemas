@@ -76,11 +76,10 @@
         "Crime",
         "Drama"
       ],
-      "year": 1993,
+      "year": "1995",
       "duration": 117,
-      "imdbRating": 5.36,
+      "imdbRating": 2.3,
       "actors": [
-        6,
         7,
         8
       ]
@@ -167,6 +166,22 @@
         6,
         9,
         11
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Hulk",
+      "poster": "https://img.lalr.co/cms/2020/12/04195426/HULK-1.jpg",
+      "genre": [
+        "acción",
+        "terror"
+      ],
+      "year": "2001",
+      "duration": "120",
+      "imdbRating": 8.4,
+      "actors": [
+        1,
+        3
       ]
     }
   ],

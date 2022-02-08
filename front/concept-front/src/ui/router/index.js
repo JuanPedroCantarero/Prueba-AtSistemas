@@ -3,7 +3,7 @@ import actors from './actors'
 import companies from './companies'
 import movies from './movies'
 const routes = [...movies, ...companies, ...actors]
-import titleState from '../../states/titleState'
+import titleState from '../../application/states/titleState'
 
 const router = createRouter({
 	history: createWebHashHistory(),
