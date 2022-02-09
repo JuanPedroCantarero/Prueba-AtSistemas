@@ -24,8 +24,16 @@ export default () => {
 		}
 	}
 
+	const restetActors = () => {
+		state.loadingActors = false
+		state.errorActors = false
+		state.actors = []
+		state.actorsToSelect = []
+	}
+
 	return {
 		...toRefs(state),
 		loadActorsToSelect,
+		restetActors,
 	}
 }

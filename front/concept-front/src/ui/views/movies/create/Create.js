@@ -9,11 +9,11 @@ export default {
 	setup() {
 		const { createNewMovie } = movieState()
 		const router = useRouter()
-
+		// Call to creation of movie
 		const createMovie = async (event) => {
 			try {
-				await createNewMovie(event)
-				router.push({ name: 'movies' })
+				const { id } = await createNewMovie(event)
+				router.push({ name: 'detail-movie', params: { id: id } })
 			} catch (e) {
 				console.error(e)
 			}

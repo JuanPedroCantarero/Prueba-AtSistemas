@@ -1,15 +1,15 @@
 export const CONFIG = Object.freeze({
 	ROUTES: [
 		{
-			title: 'Movies',
+			title: 'movies.title',
 			redirect: 'movies',
 		},
 		{
-			title: 'Actors',
+			title: 'actors.title',
 			redirect: 'actors',
 		},
 		{
-			title: 'Companies',
+			title: 'companies.title',
 			redirect: 'companies',
 		},
 	],
