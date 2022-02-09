@@ -2,6 +2,7 @@ import movieState from '../../../../application/states/movies'
 import titleState from '../../../../application/states/titleState'
 import { useRoute, useRouter } from 'vue-router'
 import { defineAsyncComponent, onBeforeMount, onBeforeUnmount, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export default {
 	components: {
@@ -14,12 +15,13 @@ export default {
 		const route = useRoute()
 		const router = useRouter()
 		const showModal = ref(false)
+		const { t } = useI18n()
 
 		// Load the movie by ID and set Title in top of sidebar title
 		const getMovieDetail = async () => {
 			try {
 				await loadMovieById(route.params.id)
-				setTitle(`Detail ${movie.value.title}`)
+				setTitle(t('titles.movies.details', { title: movie.value.title }))
 			} catch (e) {
 				console.error(e)
 			}

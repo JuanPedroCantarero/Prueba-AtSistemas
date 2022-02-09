@@ -2,7 +2,9 @@
 	<div class="w-full flex flex-col">
 		<form class="pb-20 md:grid md:grid-cols-2 md:gap-1.5 md:items-center" v-if="innerMovie">
 			<div class="mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="title"> Title </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="title">
+					{{ $t('movies.form.title') }}
+				</label>
 				<input
 					id="title"
 					v-model="innerMovie.title"
@@ -12,11 +14,13 @@
 					placeholder="Hulk"
 				/>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.title">
-					{{ errorsForm.title.message }}
+					{{ $t(`error.${errorsForm.title.type}`, { field: $t('error.fields.title') }) }}
 				</div>
 			</div>
 			<div class="mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="poster"> Poster </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="poster">
+					{{ $t('movies.form.poster') }}
+				</label>
 				<input
 					id="poster"
 					v-model="innerMovie.poster"
@@ -26,11 +30,13 @@
 					placeholder="https://......"
 				/>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.poster">
-					{{ errorsForm.poster.message }}
+					{{ $t(`error.${errorsForm.poster.type}`, { field: $t('error.fields.poster') }) }}
 				</div>
 			</div>
 			<div class="mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="genre"> Genres </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="genre">
+					{{ $t('movies.form.genres') }}
+				</label>
 				<div class="flex flex-col relative w-full">
 					<div class="w-full relative">
 						<input
@@ -49,7 +55,7 @@
 						</div>
 					</div>
 					<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.genre">
-						{{ errorsForm.genre.message }}
+						{{ $t(`error.${errorsForm.genre.type}`, { field: $t('error.fields.genre') }) }}
 					</div>
 					<div class="flex flex-wrap w-full p-1" v-if="innerMovie.genre.length > 0">
 						<div
@@ -68,7 +74,9 @@
 				</div>
 			</div>
 			<div class="inline-block relative w-full mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors"> Actors </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors">
+					{{ $t('movies.form.actors') }}
+				</label>
 				<multiselect
 					mode="tags"
 					:value="innerMovie.actors"
@@ -82,11 +90,13 @@
 					@input="(event) => (innerMovie.actors = event)"
 				/>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.actors">
-					{{ errorsForm.actors.message }}
+					{{ $t(`error.${errorsForm.actors.type}`, { field: $t('error.fields.actors') }) }}
 				</div>
 			</div>
 			<div class="inline-block relative w-full mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors"> Company </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors">
+					{{ $t('movies.form.company') }}
+				</label>
 				<multiselect
 					mode="single"
 					:value="innerMovie.company"
@@ -99,11 +109,13 @@
 					@input="(event) => (innerMovie.company = event)"
 				/>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.company">
-					{{ errorsForm.company.message }}
+					{{ $t(`error.${errorsForm.company.type}`, { field: $t('error.fields.company') }) }}
 				</div>
 			</div>
 			<div class="mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="year"> Year </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="year">
+					{{ $t('movies.form.year') }}
+				</label>
 				<input
 					id="year"
 					v-model="innerMovie.year"
@@ -113,11 +125,13 @@
 					placeholder="2000"
 				/>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.year">
-					{{ errorsForm.year.message }}
+					{{ $t(`error.${errorsForm.year.type}`, { field: $t('error.fields.year') }) }}
 				</div>
 			</div>
 			<div class="mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="duration"> Duration </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="duration">
+					{{ $t('movies.form.duration') }}
+				</label>
 				<div class="flex items-baseline relative justify-between w-full">
 					<input
 						id="duration"
@@ -130,12 +144,13 @@
 					<div class="h-full flex absolute items-center right-6 text-gray-400">mins</div>
 				</div>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.duration">
-					{{ errorsForm.duration.message }}
+					{{ $t(`error.${errorsForm.duration.type}`, { field: $t('error.fields.duration') }) }}
 				</div>
 			</div>
 			<div>
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="imdbRating">
-					Imdb rating <span v-if="innerMovie.imdbRating">({{ innerMovie.imdbRating }})</span>
+					{{ $t('movies.form.imdbRating')
+					}}<span v-if="innerMovie.imdbRating">({{ innerMovie.imdbRating }})</span>
 				</label>
 				<vue3-star-ratings
 					v-model="innerMovie.imdbRating"
@@ -146,7 +161,7 @@
 					:step="0.5"
 				></vue3-star-ratings>
 				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.imdbRating">
-					{{ errorsForm.imdbRating.message }}
+					{{ $t(`error.${errorsForm.imdbRating.type}`, { field: $t('error.fields.imdbRating') }) }}
 				</div>
 			</div>
 		</form>
@@ -157,7 +172,9 @@
 			>
 				<div class="text-2xl flex items-center justify-center md:w-24">
 					<em class="fas fa-save text-2xl"></em>
-					<span class="hidden md:block text-base ml-2">{{ innerMovie?.id ? 'Save' : 'Create' }}</span>
+					<span class="hidden md:block text-base ml-2">{{
+						$t(innerMovie?.id ? 'actions.save' : 'actions.create')
+					}}</span>
 				</div>
 			</icon-button>
 		</div>

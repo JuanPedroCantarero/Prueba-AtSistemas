@@ -8,7 +8,7 @@ export default [
 		name: 'movies',
 		component: () => import('../../views/movies/list/List.vue'),
 		props: {
-			title: 'Movies',
+			title: 'movies.title',
 		},
 	},
 	{
@@ -16,7 +16,7 @@ export default [
 		name: 'new-movie',
 		component: () => import('../../views/movies/create/Create.vue'),
 		props: {
-			title: 'New movie',
+			title: 'movies.new',
 		},
 	},
 	{
@@ -24,7 +24,7 @@ export default [
 		name: 'edit-movie',
 		component: () => import('../../views/movies/edit/Edit.vue'),
 		props: {
-			title: 'Edit ...',
+			title: 'movies.edit',
 		},
 	},
 	{
@@ -32,7 +32,7 @@ export default [
 		name: 'detail-movie',
 		component: () => import('../../views/movies/detail/Detail.vue'),
 		props: {
-			title: 'Detail ...',
+			title: 'movies.detail',
 		},
 	},
 ]

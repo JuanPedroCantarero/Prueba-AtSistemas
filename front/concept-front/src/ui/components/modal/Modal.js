@@ -1,6 +1,6 @@
 export default {
 	props: {
-		title: { default: 'Modal title' },
+		title: { default: '' },
 	},
 	emits: ['close'],
 }

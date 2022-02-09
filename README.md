@@ -36,7 +36,6 @@ yarn serve
 
 ### Next steps
 
-- Add internalization using [vue-i18n-next](https://github.com/intlify/vue-i18n-next)
-- UI notification msgs when error
+- UI notification msgs when error from back
 - Do End2End testing using [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
 - Do unit testing using [jest](https://jestjs.io/es-ES/docs/getting-started)

@@ -23,7 +23,7 @@
 				>
 					<div class="text-2xl flex items-center justify-center md:w-24">
 						<em class="fas fa-plus text-2xl"></em>
-						<span class="hidden md:block text-base ml-2">Add</span>
+						<span class="hidden md:block text-base ml-2">{{ $t('actions.add') }}</span>
 					</div>
 				</icon-button>
 			</router-link>

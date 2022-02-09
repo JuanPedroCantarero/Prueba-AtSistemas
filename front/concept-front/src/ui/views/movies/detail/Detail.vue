@@ -18,18 +18,18 @@
 		</div>
 		<div class="w-full grid grid-cols-2 gap-2 mt-2">
 			<div class="flex flex-col text-left">
-				<span class="font-bold">Rating</span>
+				<span class="font-bold">{{ $t('movies.form.imdbRating') }}</span>
 				<span class="text-gray-400 text-xs md:text-sm mt-2">{{ movie?.imdbRating || '-' }}</span>
 			</div>
 			<div class="flex flex-col text-right">
-				<span class="font-bold">Duration</span>
+				<span class="font-bold">{{ $t('movies.form.duration') }}</span>
 				<span class="text-gray-400 text-xs md:text-sm mt-2">{{
 					movie?.duration ? `${movie.duration} mins` : '-'
 				}}</span>
 			</div>
 		</div>
 		<div class="flex flex-col w-full mt-4 text-left">
-			<div class="font-bold">Actors</div>
+			<div class="font-bold">{{ $t('movies.form.actors') }}</div>
 			<div class="h-px w-full border-b border-gray-300 my-1"></div>
 			<span
 				class="text-gray-400 text-xs md:text-sm mt-1"
@@ -41,14 +41,14 @@
 			</span>
 		</div>
 		<div class="flex flex-col w-full mt-4 text-left">
-			<div class="font-bold">Company</div>
+			<div class="font-bold">{{ $t('movies.form.company') }}</div>
 			<div class="h-px w-full border-b border-gray-300 my-1"></div>
 			<span class="text-gray-400 text-xs md:text-sm mt-1">
 				{{ movie?.company ? movie.company.name : '-' }}
 			</span>
 		</div>
 		<div class="flex flex-col w-full mt-4 text-left">
-			<div class="font-bold">Genres</div>
+			<div class="font-bold">{{ $t('movies.form.genres') }}</div>
 			<div class="h-px w-full border-b border-gray-300 my-2"></div>
 			<div class="flex flex-wrap w-full">
 				<span
@@ -69,7 +69,7 @@
 					>
 						<div class="text-2xl flex items-center md:w-24 justify-center">
 							<em class="fas fa-pencil text-2xl"></em>
-							<span class="hidden md:block text-base ml-2">Edit</span>
+							<span class="hidden md:block text-base ml-2">{{ $t('actions.edit') }}</span>
 						</div>
 					</icon-button>
 				</router-link>
@@ -79,14 +79,14 @@
 				>
 					<div class="text-2xl flex items-center md:w-24">
 						<em class="fas fa-trash text-2xl"></em>
-						<span class="hidden md:block text-base ml-2">Remove</span>
+						<span class="hidden md:block text-base ml-2">{{ $t('actions.remove') }}</span>
 					</div>
 				</icon-button>
 			</div>
 		</div>
-		<modal :title="'Delete movie'" v-if="showModal" @close="deleteMovieById">
+		<modal :title="'movies.delete'" v-if="showModal" @close="deleteMovieById">
 			<div class="flex text-left text-sm md:text-base">
-				Are you sure you wants to delete movie {{ movie?.title }}?
+				{{ $t('movies.delete_movie', { title: movie?.title }) }}
 			</div>
 		</modal>
 	</div>
