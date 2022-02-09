@@ -9,7 +9,7 @@ export default {
 	setup() {
 		const { createNewMovie } = movieState()
 		const router = useRouter()
-
+		// Call to creation of movie
 		const createMovie = async (event) => {
 			try {
 				await createNewMovie(event)

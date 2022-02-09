@@ -5,21 +5,29 @@
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="title"> Title </label>
 				<input
 					id="title"
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-					type="text"
 					v-model="innerMovie.title"
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					:class="[errorsForm?.title ? 'bg-red-100 border-red-500' : '']"
+					type="text"
 					placeholder="Hulk"
 				/>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.title">
+					{{ errorsForm.title.message }}
+				</div>
 			</div>
 			<div class="mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="poster"> Poster </label>
 				<input
 					id="poster"
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-					type="text"
 					v-model="innerMovie.poster"
+					type="text"
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					:class="[errorsForm?.poster ? 'bg-red-100 border-red-500' : '']"
 					placeholder="https://......"
 				/>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.poster">
+					{{ errorsForm.poster.message }}
+				</div>
 			</div>
 			<div class="mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="genre"> Genre </label>
@@ -28,6 +36,7 @@
 						<input
 							id="genre"
 							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+							:class="[errorsForm?.genre ? 'bg-red-100 border-red-500' : '']"
 							type="text"
 							@keyup.enter="addGenre()"
 							v-model="textToAddGenre"
@@ -38,6 +47,9 @@
 								<em class="fas fa-plus relative text-xl"></em>
 							</icon-button>
 						</div>
+					</div>
+					<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.genre">
+						{{ errorsForm.genre.message }}
 					</div>
 					<div class="flex flex-wrap w-full p-1" v-if="innerMovie.genre.length > 0">
 						<div
@@ -59,37 +71,49 @@
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="year"> Year </label>
 				<input
 					id="year"
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-					type="number"
 					v-model="innerMovie.year"
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					:class="[errorsForm?.year ? 'bg-red-100 border-red-500' : '']"
+					type="number"
 					placeholder="2000"
 				/>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.year">
+					{{ errorsForm.year.message }}
+				</div>
 			</div>
 			<div class="mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="duration"> Duration </label>
 				<div class="flex items-baseline relative justify-between w-full">
 					<input
 						id="duration"
-						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-						type="number"
 						v-model="innerMovie.duration"
+						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						:class="[errorsForm?.duration ? 'bg-red-100 border-red-500' : '']"
+						type="number"
 						placeholder="300"
 					/>
 					<div class="h-full flex absolute items-center right-6 text-gray-400">mins</div>
+				</div>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.duration">
+					{{ errorsForm.duration.message }}
 				</div>
 			</div>
 			<div class="inline-block relative w-full mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors"> Actors </label>
 				<multiselect
 					mode="tags"
-					:closeOnSelect="false"
 					:value="innerMovie.actors"
-					@input="(event) => (innerMovie.actors = event)"
+					:class="`${errorsForm?.actors ? 'bg-red-100 border-red-500' : ''}`"
+					:closeOnSelect="false"
 					:options="actorsToSelect"
 					label="name"
 					value-prop="id"
 					:loading="loadingActors"
+					@input="(event) => (innerMovie.actors = event)"
 				/>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.actors">
+					{{ errorsForm.actors.message }}
+				</div>
 			</div>
 			<div>
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="imdbRating">
@@ -97,11 +121,15 @@
 				</label>
 				<vue3-star-ratings
 					v-model="innerMovie.imdbRating"
+					:class="[errorsForm?.imdbRating ? 'bg-red-100 border-red-500' : '']"
 					:numberOfStars="10"
 					starSize="20"
 					:showControl="false"
 					:step="0.5"
 				></vue3-star-ratings>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.imdbRating">
+					{{ errorsForm.imdbRating.message }}
+				</div>
 			</div>
 		</form>
 		<div class="fixed bottom-0 right-0 p-2 z-10">

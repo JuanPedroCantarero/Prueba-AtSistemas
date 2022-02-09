@@ -13,6 +13,7 @@ export default {
 		const router = useRouter()
 		const { setTitle } = titleState()
 
+		// Load the movie by ID and set Title in top of sidebar title
 		const getMovieById = async () => {
 			try {
 				await loadMovieById(route.params.id)
@@ -21,7 +22,7 @@ export default {
 				console.error(e)
 			}
 		}
-
+		// Call update of movie
 		const updateMovie = async (movieItem) => {
 			if (movieItem) {
 				try {
