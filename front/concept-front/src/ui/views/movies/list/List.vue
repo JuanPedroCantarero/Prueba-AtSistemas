@@ -4,7 +4,7 @@
 			v-for="movie in movies"
 			:key="`movie_${movie.id}`"
 			:id="`movie_${movie.id}`"
-			:to="{ name: 'edit-movie', params: { id: movie.id } }"
+			:to="{ name: 'detail-movie', params: { id: movie.id } }"
 			@click="open = !open"
 			class="flex w-ful flex-col jus p-3 bg-white border-2 border-gray-800 rounded-xl mb-2 font-sans"
 		>
@@ -21,7 +21,10 @@
 				<icon-button
 					:class-button="'bg-yellow-200 hover:bg-yellow-400 text-gray-900 px-3 py-1 border border-gray-700'"
 				>
-					<em class="fas fa-plus text-3xl"></em>
+					<div class="text-2xl flex items-center justify-center md:w-24">
+						<em class="fas fa-plus text-2xl"></em>
+						<span class="hidden md:block text-base ml-2">Add</span>
+					</div>
 				</icon-button>
 			</router-link>
 		</div>

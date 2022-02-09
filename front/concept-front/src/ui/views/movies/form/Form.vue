@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full flex flex-col">
-		<form class="pb-20 md:grid md:grid-cols-2 md:gap-1.5" v-if="innerMovie">
+		<form class="pb-20 md:grid md:grid-cols-2 md:gap-1.5 md:items-center" v-if="innerMovie">
 			<div class="mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="title"> Title </label>
 				<input
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="genre"> Genre </label>
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="genre"> Genres </label>
 				<div class="flex flex-col relative w-full">
 					<div class="w-full relative">
 						<input
@@ -67,6 +67,41 @@
 					</div>
 				</div>
 			</div>
+			<div class="inline-block relative w-full mb-4">
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors"> Actors </label>
+				<multiselect
+					mode="tags"
+					:value="innerMovie.actors"
+					:object="true"
+					:class="`${errorsForm?.actors ? 'bg-red-100 border-red-500' : ''}`"
+					:closeOnSelect="false"
+					:options="actorsToSelect"
+					label="name"
+					value-prop="id"
+					:loading="loadingActors"
+					@input="(event) => (innerMovie.actors = event)"
+				/>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.actors">
+					{{ errorsForm.actors.message }}
+				</div>
+			</div>
+			<div class="inline-block relative w-full mb-4">
+				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors"> Company </label>
+				<multiselect
+					mode="single"
+					:value="innerMovie.company"
+					:class="`${errorsForm?.company ? 'bg-red-100 border-red-500' : ''}`"
+					:object="true"
+					:options="companies"
+					label="name"
+					value-prop="id"
+					:loading="loadingCompanies"
+					@input="(event) => (innerMovie.company = event)"
+				/>
+				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.company">
+					{{ errorsForm.company.message }}
+				</div>
+			</div>
 			<div class="mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="year"> Year </label>
 				<input
@@ -98,23 +133,6 @@
 					{{ errorsForm.duration.message }}
 				</div>
 			</div>
-			<div class="inline-block relative w-full mb-4">
-				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="actors"> Actors </label>
-				<multiselect
-					mode="tags"
-					:value="innerMovie.actors"
-					:class="`${errorsForm?.actors ? 'bg-red-100 border-red-500' : ''}`"
-					:closeOnSelect="false"
-					:options="actorsToSelect"
-					label="name"
-					value-prop="id"
-					:loading="loadingActors"
-					@input="(event) => (innerMovie.actors = event)"
-				/>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.actors">
-					{{ errorsForm.actors.message }}
-				</div>
-			</div>
 			<div>
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="imdbRating">
 					Imdb rating <span v-if="innerMovie.imdbRating">({{ innerMovie.imdbRating }})</span>
@@ -137,7 +155,10 @@
 				@click="emitMovie"
 				:class-button="'bg-green-500 hover:bg-green-700 text-green-100 px-3 py-1 border border-gray-700'"
 			>
-				<em class="fas fa-save text-2xl"></em>
+				<div class="text-2xl flex items-center justify-center md:w-24">
+					<em class="fas fa-save text-2xl"></em>
+					<span class="hidden md:block text-base ml-2">{{ innerMovie?.id ? 'Save' : 'Create' }}</span>
+				</div>
 			</icon-button>
 		</div>
 	</div>

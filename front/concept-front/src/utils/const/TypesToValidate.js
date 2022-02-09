@@ -5,4 +5,5 @@ export const TYPES_TO_VALIDATE = Object.freeze({
 	BOOLEAN: 'boolean',
 	URL: 'url',
 	ARRAY: 'array',
+	OBJECT: 'object',
 })

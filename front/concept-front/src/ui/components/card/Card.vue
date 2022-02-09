@@ -1,10 +1,9 @@
 <template>
 	<div class="flex flex-col">
-		<span :id="id" class="text-left mb-2 text-lg font-bold">{{ title }}</span>
+		<span :id="id" class="text-left mb-2 text-lg font-bold truncate" :title="title">{{ title }}</span>
 		<div class="w-full h-80 relative" v-if="hasImg">
 			<img
 				v-if="imgUrl !== null"
-				:key="imgUrl"
 				loading="lazy"
 				:src="imgUrl"
 				:alt="`Poster of ${title}`"

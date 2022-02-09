@@ -1,4 +1,4 @@
-import { defineAsyncComponent, onBeforeMount } from 'vue'
+import { defineAsyncComponent, onBeforeMount, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import movieState from '../../../../application/states/movies'
 import titleState from '../../../../application/states/titleState'
@@ -8,7 +8,7 @@ export default {
 		FormMovie: defineAsyncComponent(() => import('../form/Form.vue')),
 	},
 	setup() {
-		const { loadMovieById, putMovie, movie, loadingMovies } = movieState()
+		const { loadMovieById, putMovie, movie, loadingMovies, resetMovies } = movieState()
 		const route = useRoute()
 		const router = useRouter()
 		const { setTitle } = titleState()
@@ -36,6 +36,10 @@ export default {
 
 		onBeforeMount(() => {
 			getMovieById()
+		})
+
+		onBeforeUnmount(() => {
+			resetMovies()
 		})
 
 		return {

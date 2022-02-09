@@ -23,5 +23,16 @@ export default [
 		path: '/movies/:id',
 		name: 'edit-movie',
 		component: () => import('../../views/movies/edit/Edit.vue'),
+		props: {
+			title: 'Edit ...',
+		},
+	},
+	{
+		path: '/movies/:id/detail',
+		name: 'detail-movie',
+		component: () => import('../../views/movies/detail/Detail.vue'),
+		props: {
+			title: 'Detail ...',
+		},
 	},
 ]
