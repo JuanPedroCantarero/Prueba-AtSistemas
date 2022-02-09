@@ -4,5 +4,6 @@ import router from './ui/router'
 import './assets/styles/index.css'
 import '@vueform/multiselect/themes/default.css'
 import './assets/styles/tailwind.css'
+import { i18n } from './infraestructure/i18n'
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(i18n).use(router).mount('#app')

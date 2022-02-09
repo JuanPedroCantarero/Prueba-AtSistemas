@@ -9,6 +9,10 @@ export const get = (url) => {
 	return axiosInstance.get(`${axiosInstance.defaults.baseURL}/${url}`)
 }
 
+export const deleteItem = (url) => {
+	return axiosInstance.delete(`${axiosInstance.defaults.baseURL}/${url}`)
+}
+
 export const post = (url, body) => {
 	return axiosInstance.post(`${axiosInstance.defaults.baseURL}/${url}`, body)
 }

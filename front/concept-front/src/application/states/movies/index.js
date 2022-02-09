@@ -2,6 +2,7 @@ import { reactive, toRefs } from 'vue'
 import { createMovie } from '../../../infraestructure/movies/createMovie'
 import { getMovieById } from '../../../infraestructure/movies/getMovieById'
 import { getMovies } from '../../../infraestructure/movies/getMovies'
+import { removeMovieById } from '../../../infraestructure/movies/removeMovieById'
 import { updateMovie } from '../../../infraestructure/movies/updateMovie'
 import loadingState from '../loadingState'
 
@@ -45,8 +46,20 @@ export default () => {
 		try {
 			setLoading(true)
 			state.loadingMovies = true
-			await createMovie(movie)
-			state.movie = movie
+			return await createMovie(movie)
+		} catch (error) {
+			state.errorMovies = true
+		} finally {
+			state.loadingMovies = false
+			setLoading(false)
+		}
+	}
+
+	const deleteMovie = async (id) => {
+		try {
+			setLoading(true)
+			state.loadingMovies = true
+			state.movie = await removeMovieById(id)
 		} catch (error) {
 			state.errorMovies = true
 		} finally {
@@ -69,11 +82,20 @@ export default () => {
 		}
 	}
 
+	const resetMovies = () => {
+		state.loadingMovies = false
+		state.errorMovies = false
+		state.movie = null
+		state.movies = []
+	}
+
 	return {
 		...toRefs(state),
 		loadMovies,
 		loadMovieById,
 		createNewMovie,
+		deleteMovie,
 		putMovie,
+		resetMovies,
 	}
 }
