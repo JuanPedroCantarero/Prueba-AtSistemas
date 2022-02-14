@@ -2,9 +2,9 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import actors from './actors'
 import companies from './companies'
 import movies from './movies'
-const routes = [...movies, ...companies, ...actors]
 import titleState from '../../application/states/titleState'
 
+const routes = [...movies, ...companies, ...actors]
 const router = createRouter({
 	history: createWebHashHistory(),
 	routes,

@@ -2,7 +2,7 @@ import { reactive, toRefs } from 'vue'
 import { createMovie } from '../../../infraestructure/movies/createMovie'
 import { getMovieById } from '../../../infraestructure/movies/getMovieById'
 import { getMovies } from '../../../infraestructure/movies/getMovies'
-import { removeMovieById } from '../../../infraestructure/movies/removeMovieById'
+import { removeMovie } from '../../../infraestructure/movies/removeMovie'
 import { updateMovie } from '../../../infraestructure/movies/updateMovie'
 import loadingState from '../loadingState'
 
@@ -55,11 +55,12 @@ export default () => {
 		}
 	}
 
-	const deleteMovie = async (id) => {
+	const deleteMovie = async (movie) => {
 		try {
 			setLoading(true)
 			state.loadingMovies = true
-			state.movie = await removeMovieById(id)
+			await removeMovie(movie)
+			resetMovies()
 		} catch (error) {
 			state.errorMovies = true
 		} finally {

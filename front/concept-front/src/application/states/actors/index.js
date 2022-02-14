@@ -4,7 +4,6 @@ import { getActors } from '../../../infraestructure/actors/getActors'
 const state = reactive({
 	loadingActors: false,
 	errorActors: false,
-	actors: [],
 	actorsToSelect: [],
 })
 
@@ -24,16 +23,15 @@ export default () => {
 		}
 	}
 
-	const restetActors = () => {
+	const resetActors = () => {
 		state.loadingActors = false
 		state.errorActors = false
-		state.actors = []
 		state.actorsToSelect = []
 	}
 
 	return {
 		...toRefs(state),
 		loadActorsToSelect,
-		restetActors,
+		resetActors,
 	}
 }

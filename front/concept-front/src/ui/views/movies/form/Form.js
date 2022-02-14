@@ -55,7 +55,6 @@ export default {
 		// Call movie validation
 		const validateFields = () => {
 			errorsForm.value = InstanciedMovie.validate(innerMovie.value)
-			console.log(errorsForm.value)
 		}
 		// Emit movie if not errors
 		const emitMovie = () => {
