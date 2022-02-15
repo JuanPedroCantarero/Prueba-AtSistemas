@@ -8,12 +8,14 @@
 			</div>
 			<div class="flex justify-end p-2 pt-4 border-t border-gray-300 mt-auto">
 				<button
+					id="close-modal"
 					@click="$emit('close', false)"
 					class="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded"
 				>
 					{{ $t('actions.cancel') }}
 				</button>
 				<button
+					id="accept-modal"
 					@click="$emit('close', true)"
 					class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded ml-2"
 				>

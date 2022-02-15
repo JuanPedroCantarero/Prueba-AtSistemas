@@ -1,4 +1,4 @@
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, onBeforeMount } from 'vue'
 import { useRouter } from 'vue-router'
 import movieState from '../../../../application/states/movies'
 
@@ -7,7 +7,7 @@ export default {
 		FormMovie: defineAsyncComponent(() => import('../form/Form.vue')),
 	},
 	setup() {
-		const { createNewMovie } = movieState()
+		const { createNewMovie, resetMovies } = movieState()
 		const router = useRouter()
 		// Call to creation of movie
 		const createMovie = async (event) => {
@@ -18,6 +18,10 @@ export default {
 				console.error(e)
 			}
 		}
+
+		onBeforeMount(() => {
+			resetMovies()
+		})
 
 		return {
 			createMovie,

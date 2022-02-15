@@ -21,7 +21,7 @@ export default {
 		delete: 'Delete movie',
 		delete_movie: 'Are you sure you wants to delete movie {title} ?',
 		form: {
-			title: 'title',
+			title: 'Title',
 			poster: 'Poster',
 			genres: 'Genres',
 			actors: 'Actors',

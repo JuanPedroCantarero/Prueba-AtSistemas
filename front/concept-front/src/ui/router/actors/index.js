@@ -4,7 +4,7 @@ export default [
 		name: 'actors',
 		component: () => import('../../views/actors/list/List.vue'),
 		props: {
-			title: 'Actors',
+			title_nav: 'Actors',
 		},
 	},
 ]

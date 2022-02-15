@@ -32,7 +32,8 @@ export default {
 			showModal.value = false
 			if (event) {
 				try {
-					await deleteMovie(+route.params.id)
+					await deleteMovie(movie.value)
+					resetMovies()
 					router.push({ name: 'movies' })
 				} catch (e) {
 					console.error(e)

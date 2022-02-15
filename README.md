@@ -37,5 +37,5 @@ yarn serve
 ### Next steps
 
 - UI notification msgs when error from back
-- Do End2End testing using [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
-- Do unit testing using [jest](https://jestjs.io/es-ES/docs/getting-started)
+- Do End2End update test
+- Do more unit testing using to cover all
