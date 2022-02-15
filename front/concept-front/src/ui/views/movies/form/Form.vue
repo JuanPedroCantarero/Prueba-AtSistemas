@@ -1,6 +1,6 @@
 <template>
-	<div class="w-full flex flex-col">
-		<form class="pb-20 md:grid md:grid-cols-2 md:gap-1.5 md:items-center" v-if="innerMovie">
+	<div class="w-full flex flex-col" v-if="innerMovie">
+		<form class="pb-20 md:grid md:grid-cols-2 md:gap-1.5 md:items-center">
 			<div class="mb-4">
 				<label class="text-left block text-gray-700 text-sm font-bold mb-2" for="title">
 					{{ $t('movies.form.title') }}
@@ -13,7 +13,11 @@
 					type="text"
 					placeholder="Hulk"
 				/>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.title">
+				<div
+					id="error-title"
+					class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+					v-if="errorsForm?.title"
+				>
 					{{ $t(`error.${errorsForm.title.type}`, { field: $t('error.fields.title') }) }}
 				</div>
 			</div>
@@ -29,7 +33,11 @@
 					:class="[errorsForm?.poster ? 'bg-red-100 border-red-500' : '']"
 					placeholder="https://......"
 				/>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.poster">
+				<div
+					id="error-poster"
+					class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+					v-if="errorsForm?.poster"
+				>
 					{{ $t(`error.${errorsForm.poster.type}`, { field: $t('error.fields.poster') }) }}
 				</div>
 			</div>
@@ -49,12 +57,16 @@
 							placeholder="terror"
 						/>
 						<div class="absolute right-4 top-1">
-							<icon-button @click="addGenre()">
+							<icon-button id="add-genre" @click="addGenre()">
 								<em class="fas fa-plus relative text-xl"></em>
 							</icon-button>
 						</div>
 					</div>
-					<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.genre">
+					<div
+						id="error-genres"
+						class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+						v-if="errorsForm?.genre"
+					>
 						{{ $t(`error.${errorsForm.genre.type}`, { field: $t('error.fields.genre') }) }}
 					</div>
 					<div class="flex flex-wrap w-full p-1" v-if="innerMovie.genre.length > 0">
@@ -78,6 +90,7 @@
 					{{ $t('movies.form.actors') }}
 				</label>
 				<multiselect
+					id="actors"
 					mode="tags"
 					:value="innerMovie.actors"
 					:object="true"
@@ -89,7 +102,11 @@
 					:loading="loadingActors"
 					@input="(event) => (innerMovie.actors = event)"
 				/>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.actors">
+				<div
+					id="error-actors"
+					class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+					v-if="errorsForm?.actors"
+				>
 					{{ $t(`error.${errorsForm.actors.type}`, { field: $t('error.fields.actors') }) }}
 				</div>
 			</div>
@@ -98,6 +115,7 @@
 					{{ $t('movies.form.company') }}
 				</label>
 				<multiselect
+					id="company"
 					mode="single"
 					:value="innerMovie.company"
 					:class="`${errorsForm?.company ? 'bg-red-100 border-red-500' : ''}`"
@@ -108,7 +126,11 @@
 					:loading="loadingCompanies"
 					@input="(event) => (innerMovie.company = event)"
 				/>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.company">
+				<div
+					id="error-company"
+					class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+					v-if="errorsForm?.company"
+				>
 					{{ $t(`error.${errorsForm.company.type}`, { field: $t('error.fields.company') }) }}
 				</div>
 			</div>
@@ -124,7 +146,7 @@
 					type="number"
 					placeholder="2000"
 				/>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.year">
+				<div id="error-year" class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.year">
 					{{ $t(`error.${errorsForm.year.type}`, { field: $t('error.fields.year') }) }}
 				</div>
 			</div>
@@ -143,7 +165,11 @@
 					/>
 					<div class="h-full flex absolute items-center right-6 text-gray-400">mins</div>
 				</div>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.duration">
+				<div
+					id="error-duration"
+					class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+					v-if="errorsForm?.duration"
+				>
 					{{ $t(`error.${errorsForm.duration.type}`, { field: $t('error.fields.duration') }) }}
 				</div>
 			</div>
@@ -154,19 +180,25 @@
 				</label>
 				<vue3-star-ratings
 					v-model="innerMovie.imdbRating"
+					id="imdbRating"
 					:class="[errorsForm?.imdbRating ? 'bg-red-100 border-red-500' : '']"
 					:numberOfStars="10"
 					starSize="20"
 					:showControl="false"
 					:step="0.5"
 				></vue3-star-ratings>
-				<div class="mt-2 text-red-600 font-bold text-xs text-left pl-1" v-if="errorsForm?.imdbRating">
+				<div
+					id="error-imdbRating"
+					class="mt-2 text-red-600 font-bold text-xs text-left pl-1"
+					v-if="errorsForm?.imdbRating"
+				>
 					{{ $t(`error.${errorsForm.imdbRating.type}`, { field: $t('error.fields.imdbRating') }) }}
 				</div>
 			</div>
 		</form>
 		<div class="fixed bottom-0 right-0 p-2 z-10">
 			<icon-button
+				id="submit-movie"
 				@click="emitMovie"
 				:class-button="'bg-green-500 hover:bg-green-700 text-green-100 px-3 py-1 border border-gray-700'"
 			>

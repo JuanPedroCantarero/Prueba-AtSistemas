@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col w-full sm:grid sm:grid-cols-3 sm:gap-1.5">
+	<div id="movie-list" class="flex flex-col w-full sm:grid sm:grid-cols-3 sm:gap-1.5">
 		<router-link
 			v-for="movie in movies"
 			:key="`movie_${movie.id}`"
@@ -19,6 +19,7 @@
 		<div class="fixed bottom-0 right-0 p-2">
 			<router-link :to="{ name: 'new-movie' }">
 				<icon-button
+					id="add-movie"
 					:class-button="'bg-yellow-200 hover:bg-yellow-400 text-gray-900 px-3 py-1 border border-gray-700'"
 				>
 					<div class="text-2xl flex items-center justify-center md:w-24">

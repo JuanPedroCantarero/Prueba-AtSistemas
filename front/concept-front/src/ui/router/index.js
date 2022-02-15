@@ -13,8 +13,8 @@ const router = createRouter({
 const { setTitle } = titleState()
 
 router.beforeEach((to, from, next) => {
-	if (to?.matched[0]?.props?.default?.title) {
-		setTitle(to.matched[0].props.default.title)
+	if (to?.matched[0]?.props?.default?.title_nav) {
+		setTitle(to.matched[0].props.default.title_nav)
 	}
 	return next()
 })
