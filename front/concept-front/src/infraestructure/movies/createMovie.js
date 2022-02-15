@@ -1,12 +1,13 @@
+import { Movie } from '../../domain/movie/movie'
 import { post } from '../axios'
-import { updateCompany } from '../companies/updateCompany'
+import { addMovieToCompany } from '../companies/addMovieToCompany'
 
 export const createMovie = async (movie) => {
 	try {
 		const { data } = await post('movies', movie.payloadItem())
-		if (movie?.company?.movies && !movie.company.movies.includes(data.id)) {
-			movie?.company?.movies.push(data.id)
-			await updateCompany(movie.company)
+		if (movie?.company && data?.id) {
+			const createdMovie = new Movie({ id: data.id, company: movie.company })
+			await addMovieToCompany(createdMovie)
 		}
 		return data
 	} catch (e) {
